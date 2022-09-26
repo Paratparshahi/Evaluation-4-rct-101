@@ -11,9 +11,10 @@ export const GetProductreq=()=>{
         type:GET_PRODUCTS_REQUEST
     }
 }
-export const GetProductSuccess=()=>{
+export const GetProductSuccess=(payload)=>{
     return{
-        type:GET_PRODUCTS_SUCCESS
+        type:GET_PRODUCTS_SUCCESS,
+        payload
     }
 }
 export const GetProductFail=()=>{

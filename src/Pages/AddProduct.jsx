@@ -1,14 +1,32 @@
 import React from "react";
 import { useState } from "react";
+import axios from 'axios';
+import {useDispatch,  } from "react-redux"
+import { useSelector } from "react-redux/es/exports";
+
+import { ADDProductFail, ADDProductReq, ADDProductSUccess, GetProductFail, GetProductreq, GetProductSuccess } from "../Redux/action";
 
 const AddProduct = () => {
+  const dispatch=useDispatch()
+  const Select=useSelector(state=>state)
   const [OBj,setOBj]=useState({
     name:"",
     image:"",
     price:"",
     category:""
   })
- 
+  //const select =useSelector(state=>state)
+  const [addpr,Setadd]=useState([])
+  function Addpro(OBj){
+  
+   axios.post(`http://localhost:8080/products`,OBj).then(res=>{
+    //console.log(res.data)
+   })
+   axios.get(`http://localhost:8080/products`).then(res=>{
+    dispatch(GetProductSuccess(res.data))
+    console.log(Select)
+   })
+  }
   const HandleChange=(e)=>{
     const {name,value} =e.target;
     const evals={
@@ -49,7 +67,7 @@ const AddProduct = () => {
           <input data-cy="add-product-price" type="text" name="price" onChange={HandleChange}/>
         </div>
         <div>
-          <button data-cy="add-product-button">Add</button>
+          <button data-cy="add-product-button" onClick={()=>Addpro(OBj)}>Add</button>
         </div>
       </div>
     </div>

@@ -5,7 +5,9 @@ const initialState = {
   isLoading: false,
   isError: false,
 };
-
+const sortval={
+  Val:""
+}
 export const reducer = (state = initialState,action) => {
   switch (action.type) {
     case GET_PRODUCTS_REQUEST:
@@ -17,7 +19,7 @@ export const reducer = (state = initialState,action) => {
       return{
         ...state,
         isLoading:false,
-        shoes:action.payload
+        products:action.payload
       }
     case GET_PRODUCTS_FAILURE:
       return{
@@ -29,3 +31,19 @@ export const reducer = (state = initialState,action) => {
       return state;
   }
 };
+export const Reducer2=(state=sortval)=>{
+   switch (action.type) {
+    case "asc":
+      return{
+        ...state,
+        Val:"asc"
+      }
+    case "desc":
+      return{
+        ...state,
+        Val:"asc"
+      }
+    default:
+      Val:"";
+   }
+}
