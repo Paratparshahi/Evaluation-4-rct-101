@@ -1,13 +1,6 @@
 {
   "products": [
     {
-      "id": 1,
-      "name": "MUUuu",
-      "image": "https://images.pexels.com/photos/3281608/pexels-photo-3281608.jpeg?auto=compress&cs=tinysrgb&w=800",
-      "price": "25244",
-      "category": "Sneakers"
-    },
-    {
       "id": 2,
       "name": "Shoe 2",
       "image": "https://images.pexels.com/photos/9993286/pexels-photo-9993286.jpeg?auto=compress&cs=tinysrgb&w=800",

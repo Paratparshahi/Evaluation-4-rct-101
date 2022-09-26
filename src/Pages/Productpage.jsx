@@ -7,6 +7,15 @@ import { GetProductFail, GetProductSuccess } from "../Redux/action";
 export const Productpage = () => {
   const Selector=useSelector(state=>state.products);
   //console.log(Selector)
+  function Delete(url){
+    axios.delete(url)
+    .then((res) =>{
+      console.log(res);
+      axios.get(url).then(res=>{
+        console.log(res.data)
+      })
+    });
+  }
   const dispatch=useDispatch()
   useEffect(()=>{
     axios.get(`http://localhost:8080/products?_sort=price&_order=asc`).then(res=>{
@@ -15,7 +24,7 @@ export const Productpage = () => {
       dispatch(GetProductFail())
     ])
     
-  },[])
+  },[Delete])
   return (
     <div style={{ width: "100%" }}>
       <div>
@@ -25,7 +34,7 @@ export const Productpage = () => {
         */
         Selector.map((elem)=>(
           <div>
-            <ProductCard item={elem}/>
+            <ProductCard item={elem} Delete={Delete}/>
           </div>
         ))}
         
